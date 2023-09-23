@@ -1,0 +1,72 @@
+/* QuizCard.css */
+.quiz-card {
+    background-color: #fff;
+    border: 2px solid #333; /* Border style */
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 300px;
+    width: 80%;
+    max-width: 400px;
+    margin: 0 auto; /* Center horizontally */
+    margin-top: 20px;
+    background-color: #f8f8f8; /* Background color for QuizCard */
+  }
+  
+  .quiz-card:hover {
+    transform: scale(1.03);
+  }
+  
+  .quiz-card h3 {
+    font-size: 1.5rem;
+    margin: 0 0 10px;
+    color: #333; /* Text color */
+  }
+  
+  .quiz-card p {
+    font-size: 1.2rem;
+    color: #666; /* Text color */
+    margin-bottom: 20px;
+  }
+  
+  .quiz-card img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+  }
+  
+  .quiz-card button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007bff; /* Button background color */
+    color: #fff; /* Button text color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2rem;
+  }
+  
+  .quiz-card button:hover {
+    background-color: #0056b3; /* Button background color on hover */
+  }
+  
+  /* Category-specific styles */
+  .easy-card {
+    border-color: #4caf50; /* Border color for 'Easy' cards */
+  }
+  
+  .medium-card {
+    border-color: #ff9800; /* Border color for 'Medium' cards */
+  }
+  
+  .hard-card {
+    border-color: #f44336; /* Border color for 'Hard' cards */
+  }
+  
+  
