@@ -1,129 +1,90 @@
-/* Reset some default styles for consistent rendering across browsers */
+/* Reset some default styles for better consistency */
 body,
-div,
+html,
 h1,
 h2,
-h3,
 p,
 ul,
-li,
-button {
+li {
   margin: 0;
   padding: 0;
-  border: 0;
 }
 
-/* Apply a basic font and background color to the entire app */
+/* Set a background color and font family for the entire app */
 body {
-  font-family: Arial, sans-serif;
   background-color: #f4f4f4;
-  color: #333; /* Default text color */
+  font-family: Arial, sans-serif;
 }
 
-/* Style the top-level container of your app */
-#root {
+/* Style the container for your card set and quiz card */
+.App {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: #f4f4f4; /* Background color for the entire app */
-}
-
-/* Style the CardSet component */
-.card-set {
-  background-color: #fff;
-  border: 1px solid #ddd;
   padding: 20px;
-  margin: 20px;
-  border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  text-align: center;
-  max-width: 800px;
+  box-sizing: border-box;
 }
 
-.card-set h2 {
-  font-size: 2rem;
-  margin: 0 0 10px;
-  color: #333; /* Text color */
-}
-
-.card-set p {
-  font-size: 1.2rem;
-  color: #666; /* Text color */
-  margin-bottom: 20px;
-}
-
-/* Style the QuizCard component */
-.quiz-card {
+/* Style the card set */
+.CardSet {
   background-color: #fff;
-  border: 2px solid #333; /* Border style */
-  padding: 30px;
+  padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  transition: transform 0.3s ease-in-out;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 300px;
-  width: 80%;
-  max-width: 400px;
-  margin: 0 auto;
-  margin-top: 20px;
-  background-color: #f8f8f8; /* Background color for QuizCard */
-}
-
-.quiz-card:hover {
-  transform: scale(1.03);
-}
-
-.quiz-card h3 {
-  font-size: 1.5rem;
-  margin: 0 0 10px;
-  color: #333; /* Text color */
-}
-
-.quiz-card p {
-  font-size: 1.2rem;
-  color: #666; /* Text color */
   margin-bottom: 20px;
 }
 
-.quiz-card img {
-  max-width: 100%;
-  height: auto;
-  margin-top: 20px;
+/* Style the card set title */
+.CardSet h1 {
+  font-size: 24px;
+  margin-bottom: 10px;
 }
 
-.quiz-card button {
-  margin-top: 20px;
-  padding: 10px 20px;
-  background-color: #007bff; /* Button background color */
-  color: #fff; /* Button text color */
+/* Style the card set description */
+.CardSet p {
+  font-size: 16px;
+  color: #555;
+}
+
+/* Style the quiz card */
+.QuizCard {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+  width: 100%;
+  text-align: center;
+}
+
+/* Style the quiz card question */
+.QuizCard h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+/* Style the quiz card category */
+.QuizCard p {
+  font-size: 14px;
+  color: #888;
+}
+
+/* Style the next button */
+.NextButton {
+  background-color: #007bff;
+  color: #fff;
   border: none;
   border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
   cursor: pointer;
-  font-size: 1.2rem;
+  margin-top: 20px;
+  transition: background-color 0.3s ease;
 }
 
-.quiz-card button:hover {
-  background-color: #0056b3; /* Button background color on hover */
+/* Change the button color on hover */
+.NextButton:hover {
+  background-color: #0056b3;
 }
-
-/* Category-specific styles */
-.easy-card {
-  border-color: #4caf50; /* Border color for 'Easy' cards */
-}
-
-.medium-card {
-  border-color: #ff9800; /* Border color for 'Medium' cards */
-}
-
-.hard-card {
-  border-color: #f44336; /* Border color for 'Hard' cards */
-}
-
-
-
