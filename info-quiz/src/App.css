@@ -5,9 +5,12 @@ h1,
 h2,
 p,
 ul,
-li {
+li,
+button,
+input {
   margin: 0;
   padding: 0;
+  border: none;
 }
 
 /* Set a background color and font family for the entire app */
@@ -37,9 +40,10 @@ body {
 }
 
 /* Style the card set title */
-.CardSet h1 {
+.CardSet h2 {
   font-size: 24px;
   margin-bottom: 10px;
+  color: #333;
 }
 
 /* Style the card set description */
@@ -63,6 +67,7 @@ body {
 .QuizCard h2 {
   font-size: 20px;
   margin-bottom: 20px;
+  color: #333;
 }
 
 /* Style the quiz card category */
@@ -88,3 +93,74 @@ body {
 .NextButton:hover {
   background-color: #0056b3;
 }
+
+/* Advanced styling for the streak counter */
+.streak-counter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+.streak-counter p {
+  font-size: 18px;
+  margin: 5px;
+  color: #555;
+}
+
+/* Advanced styling for the controls */
+.controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.controls button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.controls button:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.controls button:hover {
+  background-color: #0056b3;
+}
+
+/* Advanced styling for the Mark as Mastered button */
+.controls button.mark-mastered {
+  background-color: #4caf50;
+}
+
+.controls button.mark-mastered:hover {
+  background-color: #388e3c;
+}
+
+/* Advanced styling for the Shuffle button */
+.controls button.shuffle {
+  background-color: #f44336;
+}
+
+.controls button.shuffle:hover {
+  background-color: #d32f2f;
+}
+
+/* Advanced styling for the Back button */
+.controls button.back {
+  background-color: #9e9e9e;
+}
+
+.controls button.back:hover {
+  background-color: #757575;
+}
+

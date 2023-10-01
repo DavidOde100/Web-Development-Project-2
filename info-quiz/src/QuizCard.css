@@ -1,82 +1,124 @@
 /* Define styles for the QuizCard component */
+
+/* Quiz card container */
 .quiz-card {
-    background-color: #fff;
-    border: 1px solid #ddd;
-    border-radius: 10px;
-    padding: 20px;
-    margin: 20px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease-in-out;
-    cursor: pointer;
-    position: relative;
-    overflow: hidden;
-    max-width: 500px;
-  }
-  
-  .quiz-card h3 {
-    font-size: 20px;
-    margin-bottom: 10px;
-    color: #333;
-  }
-  
-  .quiz-card p {
-    font-size: 16px;
-    color: #555;
-  }
-  
-  .quiz-card img {
-    max-width: 100%;
-    height: auto;
-    margin-top: 10px;
-  }
-  
-  .quiz-card button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 20px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .quiz-card:hover {
-    transform: scale(1.02);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  }
-  
-  .quiz-card.easy-card {
-    background-color: #4caf50; /* Green for easy cards */
-    color: #fff;
-  }
-  
-  .quiz-card.medium-card {
-    background-color: #ffc107; /* Yellow for medium cards */
-    color: #333;
-  }
-  
-  .quiz-card.hard-card {
-    background-color: #f44336; /* Red for hard cards */
-    color: #fff;
-  }
-  
-  .quiz-card:hover button {
-    background-color: #0056b3;
-  }
-  
-  /* Add a fade-in animation to the answer */
-  .quiz-card p {
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-  }
-  
-  .quiz-card:hover p {
-    opacity: 1;
-  }
-  
-  
-  
-  
-  
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  margin: 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  max-width: 500px;
+}
+
+/* Quiz card question and answer styles */
+.quiz-card h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.quiz-card p {
+  font-size: 16px;
+  color: #555;
+}
+
+/* Quiz card image styles */
+.quiz-card img {
+  max-width: 100%;
+  height: auto;
+  margin-top: 10px;
+}
+
+/* Quiz card user input styles */
+.quiz-card input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.quiz-card button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.quiz-card button:hover {
+  background-color: #0056b3;
+}
+
+/* Correct and incorrect feedback styles */
+.quiz-card p.correct,
+.quiz-card p.incorrect {
+  font-weight: bold;
+  margin-top: 10px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.quiz-card p.correct {
+  color: #4caf50; /* Green for correct */
+}
+
+.quiz-card p.incorrect {
+  color: #f44336; /* Red for incorrect */
+}
+
+/* Quiz card navigation buttons */
+.nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.back-button,
+.next-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.back-button:hover,
+.next-button:hover {
+  background-color: #0056b3;
+}
+
+/* Card category styles */
+.easy-card {
+  background-color: #4caf50; /* Green for easy cards */
+  color: #fff;
+}
+
+.medium-card {
+  background-color: #ffc107; /* Yellow for medium cards */
+  color: #333;
+}
+
+.hard-card {
+  background-color: #f44336; /* Red for hard cards */
+  color: #fff;
+}
+
+/* Styling for when the card is hovered */
+.quiz-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
