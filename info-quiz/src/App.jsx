@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import './App.css';
 import CardSet from '/src/CardSet';
 import QuizCard from '/src/QuizCard';
+import MasteredCards from '/src/MasteredCards';
 
 const App = () => {
   const cardSetData = {
@@ -12,7 +13,7 @@ const App = () => {
   };
 
   // Define an array of card pairs, each containing a question, answer, category, and optional image
-  const cardPairs = [
+  const initialCardPairs = [
     {
       question: 'How much Thermo Fisher Scientific stock does Dr. Oz own?',
       answer: 'Dr. Oz owns approximately $2 million worth of Thermo Fisher Scientific stock.',
@@ -76,15 +77,53 @@ const App = () => {
     // Add more card pairs here as needed
   ];
 
+  const [cardPairs, setCardPairs] = useState(initialCardPairs);
   const [currentCardIndex, setCurrentCardIndex] = useState(0);
+  const [masteredCards, setMasteredCards] = useState([]); // Array to store mastered cards
+  const [streak, setStreak] = useState(0); // Current streak
+  const [longestStreak, setLongestStreak] = useState(0); // Longest streak
 
   const handleNextClick = () => {
-    const randomIndex = Math.floor(Math.random() * cardPairs.length);
-    if (randomIndex !== currentCardIndex) {
-      setCurrentCardIndex(randomIndex);
-    } else {
-      handleNextClick();
+    const nextIndex = (currentCardIndex + 1) % cardPairs.length;
+    setCurrentCardIndex(nextIndex);
+  };
+
+  const handleBackClick = () => {
+    const previousIndex =
+      currentCardIndex === 0 ? cardPairs.length - 1 : currentCardIndex - 1;
+    setCurrentCardIndex(previousIndex);
+  };
+
+  const shuffleCards = () => {
+    // Shuffle the cards randomly
+    const shuffledCards = [...cardPairs];
+    for (let i = shuffledCards.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffledCards[i], shuffledCards[j]] = [shuffledCards[j], shuffledCards[i]];
     }
+    setCardPairs(shuffledCards);
+  };
+
+  const handleMarkMastered = () => {
+    // Add the current card to the list of mastered cards and remove it from the pool
+    const currentCard = cardPairs[currentCardIndex];
+    setMasteredCards([...masteredCards, currentCard]);
+    const updatedCardPairs = cardPairs.filter((_, index) => index !== currentCardIndex);
+    setCardPairs(updatedCardPairs);
+    handleNextClick(); // Move to the next card
+  };
+
+  const handleCorrectAnswer = () => {
+    // Handle correct answer for streak counting
+    setStreak(streak + 1);
+    if (streak + 1 > longestStreak) {
+      setLongestStreak(streak + 1);
+    }
+  };
+
+  const handleIncorrectAnswer = () => {
+    // Handle incorrect answer for streak counting
+    setStreak(0);
   };
 
   const currentCard = cardPairs[currentCardIndex];
@@ -92,11 +131,35 @@ const App = () => {
   return (
     <div className="App">
       <CardSet {...cardSetData} />
-      <QuizCard {...currentCard} onNextClick={handleNextClick} />
+      <div className="controls">
+        <button onClick={handleBackClick} disabled={currentCardIndex === 0}>
+          Back
+        </button>
+        <button onClick={shuffleCards}>Shuffle</button>
+        <button onClick={handleNextClick} disabled={currentCardIndex === cardPairs.length - 1}>
+          Next
+        </button>
+        <button onClick={handleMarkMastered}>Mark as Mastered</button>
+      </div>
+      <MasteredCards masteredCards={masteredCards} />
+      <div className="streak-counter">
+        <p>Current Streak: {streak}</p>
+        <p>Longest Streak: {longestStreak}</p>
+      </div>
+      <QuizCard
+        cardPairs={cardPairs}
+        currentCardIndex={currentCardIndex}
+        onNextClick={() => {
+          handleNextClick();
+          handleCorrectAnswer();
+        }}
+        onBackClick={() => {
+          handleBackClick();
+          handleIncorrectAnswer();
+        }}
+      />
     </div>
   );
 };
 
 export default App;
-
-

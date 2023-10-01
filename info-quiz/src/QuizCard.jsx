@@ -1,19 +1,18 @@
 import React, { useState } from 'react';
 import '/src/QuizCard.css';
 
-const QuizCard = ({ question, answer, image, category, onNextClick }) => {
+const QuizCard = ({ cardPairs, currentCardIndex, onNextClick, onBackClick }) => {
   const [showAnswer, setShowAnswer] = useState(false);
-  const [userGuess, setUserGuess] = useState(''); // To track user input
-  const [isCorrect, setIsCorrect] = useState(null); // To track correctness
-  const [submitted, setSubmitted] = useState(false); // To track submission
+  const [userGuess, setUserGuess] = useState('');
+  const [isCorrect, setIsCorrect] = useState(null);
+  const [submitted, setSubmitted] = useState(false);
 
   const toggleAnswer = () => {
     setShowAnswer(!showAnswer);
   };
 
-  // Define CSS classes based on the category
   const getCategoryClassName = () => {
-    switch (category) {
+    switch (cardPairs[currentCardIndex].category) {
       case 'Difficulty: Easy':
         return 'easy-card';
       case 'Difficulty: Medium':
@@ -30,8 +29,11 @@ const QuizCard = ({ question, answer, image, category, onNextClick }) => {
   };
 
   const handleSubmit = () => {
-    // Check if the user's guess matches the answer
-    const isGuessCorrect = userGuess.toLowerCase() === answer.toLowerCase();
+    const currentCard = cardPairs[currentCardIndex];
+    const userAnswer = userGuess.toLowerCase();
+    const targetAnswer = currentCard.answer.toLowerCase();
+    const isGuessCorrect = userAnswer.includes(targetAnswer) || targetAnswer.includes(userAnswer);
+    
     setIsCorrect(isGuessCorrect);
     setSubmitted(true);
   };
@@ -41,7 +43,7 @@ const QuizCard = ({ question, answer, image, category, onNextClick }) => {
       {showAnswer ? (
         <>
           <h3>Answer:</h3>
-          <p>{answer}</p>
+          <p>{cardPairs[currentCardIndex].answer}</p>
           {submitted && (
             <p className={isCorrect ? 'correct' : 'incorrect'}>
               {isCorrect ? 'Correct!' : 'Incorrect!'}
@@ -51,8 +53,10 @@ const QuizCard = ({ question, answer, image, category, onNextClick }) => {
       ) : (
         <>
           <h3>Question:</h3>
-          <p>{question}</p>
-          {image && <img src={image} alt="Card Image" />}
+          <p>{cardPairs[currentCardIndex].question}</p>
+          {cardPairs[currentCardIndex].image && (
+            <img src={cardPairs[currentCardIndex].image} alt="Card Image" />
+          )}
           {!submitted && (
             <div>
               <input
@@ -66,10 +70,16 @@ const QuizCard = ({ question, answer, image, category, onNextClick }) => {
           )}
         </>
       )}
-      <button onClick={onNextClick}>Next</button>
+      <div className="nav-buttons">
+        <button className="back-button" onClick={onBackClick}>
+          Back
+        </button>
+        <button className="next-button" onClick={onNextClick}>
+          Next
+        </button>
+      </div>
     </div>
   );
 };
 
 export default QuizCard;
-
