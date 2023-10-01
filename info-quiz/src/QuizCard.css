@@ -2,24 +2,28 @@
 
 /* Quiz card container */
 .quiz-card {
-  background-color: #fff;
+  background: linear-gradient(45deg, #007bff, #00bcff);
   border: 1px solid #ddd;
   border-radius: 10px;
   padding: 20px;
   margin: 20px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease-in-out;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease-in-out, background-color 0.3s ease;
   cursor: pointer;
   position: relative;
   overflow: hidden;
   max-width: 500px;
+  box-sizing: border-box;
 }
 
 /* Quiz card question and answer styles */
 .quiz-card h3 {
   font-size: 20px;
   margin-bottom: 10px;
-  color: #333;
+  background: linear-gradient(45deg, #007bff, #00bcff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
 .quiz-card p {
@@ -119,6 +123,6 @@
 
 /* Styling for when the card is hovered */
 .quiz-card:hover {
-  transform: scale(1.02);
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: scale(1.02) rotate(3deg); /* Rotate card slightly on hover */
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Larger and darker shadow on hover */
 }
